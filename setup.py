@@ -17,7 +17,7 @@ setup(
     author='Divesh Uttamchandani',
     author_email='diveshuttamchandani@gmail.com',
     license='MIT',
-    description='a CLI to view, code and submit problems directly from terminal',
+    description='CLI to view, code and submit problems directly from terminal',
     long_description=readme(),
     keywords='competetive iarcs codechef oj',
     classifiers=[
@@ -39,7 +39,7 @@ setup(
         'Click',
         'requests',
         'beautifulsoup4'
-    ] + (["colorama==0.3.3"] if "win" in sys.platform else []),
+    ] + (['colorama==0.3.3'] if 'win' in sys.platform else []),
     entry_points='''
         [console_scripts]
         termicoder=termicoder.cli:main

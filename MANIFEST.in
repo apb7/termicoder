@@ -4,7 +4,7 @@ recursive-include termicoder/utils/scripts *
 recursive-include termicoder/utils/templates *
 include termicoder/utils/*.json
 include termicoder/judges/codechef/*.json
-global-exclude *.dump 
+global-exclude *.dump
 prune termicoder/judges/spoj
 prune .ropeproject
 graft documentation

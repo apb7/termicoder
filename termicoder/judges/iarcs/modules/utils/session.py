@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup, Comment
 import termicoder.judges.iarcs.modules.utils.cookies as cookies
 import termicoder.utils.display as display
 
-url = "http://opc.iarcs.org.in/"
+url = 'http://opc.iarcs.org.in/'
 iarcs_session = requests.session()
 # None=> urlerror
 # True=> logged in
@@ -11,12 +11,12 @@ iarcs_session = requests.session()
 
 
 def login(username, password):
-    login_url = url+"index.php/auth/login"
+    login_url = url+'index.php/auth/login'
     global iarcs_session
     form_data = {
-        "username": username,
-        "password": password,
-        "redirectto": "/"
+        'username': username,
+        'password': password,
+        'redirectto': '/'
     }
     try:
         logged_page = iarcs_session.post(login_url, form_data)
@@ -27,12 +27,12 @@ def login(username, password):
             if(cookies.save(iarcs_session)):
                 return True
         else:
-            display.credential_error("iarcs", abort=True)
+            display.credential_error('iarcs', abort=True)
 
 
 def logout():
     global iarcs_session
-    logout_url = url+"index.php/auth/logout"
+    logout_url = url+'index.php/auth/logout'
     try:
         # no need to store in a variable
         iarcs_session.get(logout_url)
@@ -61,7 +61,7 @@ def is_logged_in(ensure=True, passed_page=None):
             page = passed_page
         else:
             try:
-                page = iarcs_session.get(url+"index.php")
+                page = iarcs_session.get(url+'index.php')
             except BaseException:
                 return None
         soup = BeautifulSoup(page.text, 'html.parser')

@@ -16,7 +16,7 @@ OJs = sorted([
 
 # importing OJ's Modules
 for OJ in OJs:
-    exec("import termicoder.judges.%s.main as %s" % (OJ, OJ))
+    exec('import termicoder.judges.%s.main as %s' % (OJ, OJ))
 
 
 @click.group()
@@ -36,9 +36,9 @@ def view():
     pass
 
 
-@click.command(short_help="display contest list of a judge")
+@click.command(short_help='display contest list of a judge')
 @click.option('-j', '--judge', type=click.Choice(OJs),
-              prompt="Please provide a judge("+'|'.join(OJs)+")")
+              prompt='Please provide a judge('+'|'.join(OJs)+')')
 def contests(judge):
     '''
     lists current and upcoming contests on a judge.
@@ -49,10 +49,10 @@ def contests(judge):
     eval(judge).view_contests()
 
 
-@click.command(short_help="list problems of a contest/category")
+@click.command(short_help='list problems of a contest/category')
 @click.option('-j', '--judge', type=click.Choice(OJs),
-              prompt="Please provide a judge("+'|'.join(OJs)+")")
-@click.option('-c', '--contest', type=click.STRING, help="contest code")
+              prompt='Please provide a judge('+'|'.join(OJs)+')')
+@click.option('-c', '--contest', type=click.STRING, help='contest code')
 def problems(judge, contest):
     '''
     lists problems of a contest/category on the judge
@@ -60,10 +60,10 @@ def problems(judge, contest):
     eval(judge).view_problems(contest)
 
 
-@click.command(short_help="view contents of current folder")
-@click.option("-f", "--folder", type=click.Path())
-@click.option("-ed", "--edit_defaults", is_flag=True, default=False,
-              help="edit default web browser")
+@click.command(short_help='view contents of current folder')
+@click.option('-f', '--folder', type=click.Path())
+@click.option('-ed', '--edit_defaults', is_flag=True, default=False,
+              help='edit default web browser')
 def this(folder, edit_defaults):
     '''
     display the termicoder contents in current/passed folder
@@ -83,9 +83,9 @@ view.add_command(this)
 
 @click.command()
 @click.option('-j', '--judge', type=click.Choice(OJs),
-              prompt="Please provide a judge("+'|'.join(OJs)+")")
-@click.option('-c', '--contest', type=click.STRING, help="contest code")
-@click.option('-p', '--problem', type=click.STRING, help="problem code")
+              prompt='Please provide a judge('+'|'.join(OJs)+')')
+@click.option('-c', '--contest', type=click.STRING, help='contest code')
+@click.option('-p', '--problem', type=click.STRING, help='problem code')
 @click.option('--login', 'status', flag_value='login')
 @click.option('--logout', 'status', flag_value='logout')
 def setup(judge, contest, problem, status):
@@ -110,11 +110,11 @@ def setup(judge, contest, problem, status):
 @click.command()
 @click.option('-f', '--file', 'code_file',
               type=click.Path(writable=True, readable=False, dir_okay=False),
-              help="the filename to code into with preloaded template")
-@click.option('-et', "--edit_templates", is_flag=True, default=False,
-              help="open templates folder")
-@click.option('-ed', "--edit_defaults", is_flag=True, default=False,
-              help="edit defaults for editors")
+              help='the filename to code into with preloaded template')
+@click.option('-et', '--edit_templates', is_flag=True, default=False,
+              help='open templates folder')
+@click.option('-ed', '--edit_defaults', is_flag=True, default=False,
+              help='edit defaults for editors')
 def code(code_file, edit_templates, edit_defaults):
     '''
     creates & open code file with template code.
@@ -137,12 +137,12 @@ def code(code_file, edit_templates, edit_defaults):
 
 @click.command()
 @click.option('-f', '--file', 'code_file', type=click.File(),
-              help="the code file")
+              help='the code file')
 @click.option('-tl', '--timelimit', type=float,
-              help="the max time per testcase")
+              help='the max time per testcase')
 @click.option('-l', '--live', is_flag=True, default=False,
               help="test the code live and don't use testcases")
-@click.option('-es', "--edit_scripts", is_flag=True, default=False)
+@click.option('-es', '--edit_scripts', is_flag=True, default=False)
 def test(code_file, edit_scripts, timelimit, live):
     '''
     test code against the sample testcases.
@@ -166,7 +166,7 @@ def test(code_file, edit_scripts, timelimit, live):
 
 @click.command()
 @click.option('-f', '--file', 'code_file', type=click.File(),
-              help="the code file")
+              help='the code file')
 def submit(code_file):
     '''
     submit a solution.

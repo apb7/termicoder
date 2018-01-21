@@ -4,7 +4,7 @@ import os
 import termicoder.utils.display as display
 # following is the cookie file rem that it is a binary file
 dir_name = os.path.dirname(__file__)
-cookie_file_path = dir_name+"/codechef_cookies.dump"
+cookie_file_path = dir_name+'/codechef_cookies.dump'
 
 
 def save(session):

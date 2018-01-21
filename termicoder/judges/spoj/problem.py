@@ -12,15 +12,17 @@ from bs4 import BeautifulSoup
 def problem(url):
     r = requests.get(url)
     if r.status_code == 404:
-        sys.exit("please check the problem code you entered")
+        sys.exit('please check the problem code you entered')
     else:
-        soup = BeautifulSoup(r.text, "html.parser")
+        soup = BeautifulSoup(r.text, 'html.parser')
         print soup.find('h1#problem-name').text
         print
         body = soup.select('div#problem-body')[0].text
         if body.find('Input') < body.find('Example'):
-            in_index, out_index, info_index, eg_index = body.find('Input'), body.find(
-                'Output'), body.find('Information'), body.find('Example')
+            in_index = body.find('Input'),
+            out_index = body.find('Output'),
+            info_index = body.find('Information'),
+            eg_index = body.find('Example')
             print textwrap.fill(body[0:in_index], width=80)
             print
             print 'Input'
@@ -44,5 +46,5 @@ def problem(url):
                 print body[eg_index::1]
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     problem(sys.argv[1])

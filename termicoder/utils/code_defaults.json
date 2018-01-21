@@ -1,7 +1,7 @@
 {
-  "cpp": null,
-  "c": null,
-  "python": null,
-  "java": null,
-  "default_extension":"cpp"
+    'cpp': null,
+    'c': null,
+    'python': null,
+    'java': null,
+    'default_extension': 'cpp'
 }

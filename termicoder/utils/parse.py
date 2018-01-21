@@ -3,19 +3,19 @@ import json
 import click
 import termicoder.utils.display as display
 
-supported_extensions = [".py", ".cpp", ".c", ".java", ".c++", ".cc"]
+supported_extensions = ['.py', '.cpp', '.c', '.java', '.c++', '.cc']
 
 
 def get_judge():
-    problem_file_path = ".problem"
+    problem_file_path = '.problem'
 
     try:
-        f = open(problem_file_path, "r")
+        f = open(problem_file_path, 'r')
     except BaseException:
         display.file_read_error(problem_file_path, abort=True)
     else:
         j = json.load(f)
-        return j["judge"]
+        return j['judge']
 
 
 def get_file_name(file):
@@ -31,7 +31,8 @@ def get_file_name(file):
 def get_code_file():
     probable_files = []
     for f in os.listdir(os.getcwd()):
-        if(os.path.isfile(f) and os.path.splitext(f)[1] in supported_extensions):
+        if(os.path.isfile(f) and os.path.splitext(f)[1] in
+           supported_extensions):
             probable_files.append(f)
 
     default_file = None
@@ -51,16 +52,16 @@ def get_code_file():
 
 def get_time_limit():
     time_limit = None
-    problem_file_path = ".problem"
+    problem_file_path = '.problem'
 
     try:
-        f = open(problem_file_path, "r")
+        f = open(problem_file_path, 'r')
     except BaseException:
         pass
     else:
         j = json.load(f)
         try:
-            time_limit = j["max_timelimit"]
+            time_limit = j['max_timelimit']
         except BaseException:
             pass
 
@@ -71,4 +72,4 @@ def get_time_limit():
 
 
 def get_memory_limit():
-    click.echo("memory_limit not implemented in this version")
+    click.echo('memory_limit not implemented in this version')

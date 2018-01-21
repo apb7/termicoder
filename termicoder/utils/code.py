@@ -6,31 +6,31 @@ import termicoder.utils.display as display
 import json
 
 lang_map = {
-    ".py": "python",
-    ".c": "c",
-    ".cpp": "cpp",
-    ".cc": "cpp",
-    ".c++": "cpp",
-    ".java": "java"
+    '.py': 'python',
+    '.c': 'c',
+    '.cpp': 'cpp',
+    '.cc': 'cpp',
+    '.c++': 'cpp',
+    '.java': 'java'
 }
 
 
 def edit_templates():
-    click.confirm("This will open the templates folder in file manager\n" +
-                  "Where you can edit templates for various languages\n"
-                  "Do you want to conitnue?", default=True, abort=True)
-    templates_folder = os.path.join(os.path.dirname(__file__), "templates")
+    click.confirm('This will open the templates folder in file manager\n' +
+                  'Where you can edit templates for various languages\n'
+                  'Do you want to conitnue?', default=True, abort=True)
+    templates_folder = os.path.join(os.path.dirname(__file__), 'templates')
     click.launch(templates_folder)
     sys.exit()
 
 
 def edit_defaults():
-    click.confirm("This will open the json code default file\n" +
-                  "where you can edit default editors for various languages\n"
-                  "Do you want to conitnue?", default=True, abort=True)
+    click.confirm('This will open the json code default file\n' +
+                  'where you can edit default editors for various languages\n'
+                  'Do you want to conitnue?', default=True, abort=True)
     code_defaults_file = os.path.join(
         os.path.dirname(__file__),
-        "code_defaults.json")
+        'code_defaults.json')
     click.edit(filename=code_defaults_file)
     sys.exit()
 
@@ -40,8 +40,8 @@ def edit_defaults():
 def code(code_file):
     code_defaults_file = os.path.join(
         os.path.dirname(__file__),
-        "code_defaults.json")
-    f = open(code_defaults_file, "r")
+        'code_defaults.json')
+    f = open(code_defaults_file, 'r')
     defaults = json.load(f)
     ext = os.path.splitext(code_file)[1]
     app = None
@@ -49,13 +49,13 @@ def code(code_file):
     if(ext in lang_map):
         if(os.path.exists(code_file) is False):
             templates_folder = os.path.join(
-                os.path.dirname(__file__), "templates")
+                os.path.dirname(__file__), 'templates')
             lang_folder = lang_map[ext]
             lang_folder = os.path.join(templates_folder, lang_folder)
             try:
-                template_file = os.path.join(lang_folder, "template"+ext)
-                template = open(template_file, "r").readlines()
-                f = open(code_file, "w")
+                template_file = os.path.join(lang_folder, 'template'+ext)
+                template = open(template_file, 'r').readlines()
+                f = open(code_file, 'w')
                 f.write(''.join(template))
                 f.close()
             except BaseException:
@@ -74,25 +74,25 @@ def code(code_file):
 def get_file_name():
     code_defaults_file = os.path.join(
         os.path.dirname(__file__),
-        "code_defaults.json")
-    f = open(code_defaults_file, "r")
-    ext = json.load(f)["default_extension"]
-    problem_file_path = ".problem"
+        'code_defaults.json')
+    f = open(code_defaults_file, 'r')
+    ext = json.load(f)['default_extension']
+    problem_file_path = '.problem'
 
     file_name = None
     try:
-        f = open(problem_file_path, "r")
+        f = open(problem_file_path, 'r')
     except BaseException:
         pass
     else:
         j = json.load(f)
-        file_name = j["problem_code"]+"."+ext
+        file_name = j['problem_code']+'.'+ext
 
-    if(ext == "java"):
-        file_name = "Main.java"
+    if(ext == 'java'):
+        file_name = 'Main.java'
 
     code_file = click.prompt(
-        "Please provide a code file",
+        'Please provide a code file',
         type=click.Path(
             writable=True,
             readable=False,

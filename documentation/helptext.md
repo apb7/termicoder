@@ -1,6 +1,7 @@
 # Help Texts
-### output of all termicoder help commads is pasted here just for reference before you download.
-### after downloading you can always run the [HELP](#help) command
+**output of all termicoder help commads is pasted here just for
+reference before you download.**
+**after downloading you can always run the [HELP](#help) command**
 
 ## Help
 ```
@@ -113,7 +114,7 @@ Usage: termicoder test [OPTIONS]
 Options:
   -f, --file FILENAME     the code file
   -tl, --timelimit FLOAT  the max time per testcase
-  -l, --live              test the code live and don't use testcases
+  -l, --live              test the code live and not use testcases
   -es, --edit_scripts
   --help                  Show this message and exit.
 ```

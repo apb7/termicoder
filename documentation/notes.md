@@ -1,5 +1,5 @@
 click.File() has a different `__str__` function,
-so don't use default parameter for it in case of commands,
+so do not use default parameter for it in case of commands,
 also be careful while taking it as input actually we may only require its name
 use click.File().name attrbute , finally for help see parse.codefile function
 

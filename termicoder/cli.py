@@ -24,7 +24,6 @@ def main():
     '''
     view, code & submit problems directly from terminal.
     '''
-    pass
 
 
 # view command has various subcommands
@@ -33,7 +32,6 @@ def view():
     '''
     view contests, problems and problem statement
     '''
-    pass
 
 
 @click.command(short_help='display contest list of a judge')

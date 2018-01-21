@@ -10,10 +10,13 @@ def view_contest(folder):
     if(folder is None):
         contest_file_path = '.contest'
     else:
-        os.path.join(folder, '.contest')
+        contest_file_path = os.path.join(folder, '.contest')
     click.echo(
         'You are in a contest folder\n' +
-        'view contest is not implemnted in this version')
+        'view contest is not implemented in this version\n' +
+        'have a look at the following file for contest details'
+    )
+    display.print_path(contest_file_path)
 
 
 def edit_browser_defaults():
